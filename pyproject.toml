@@ -1,0 +1,86 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sigmaforge"
+version = "0.1.0"
+description = "Convert Sigma detection rules into native SIEM/XDR queries. One Sigma rule. Every SIEM."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "SigmaForge Contributors" }]
+keywords = ["sigma", "siem", "detection", "dfir", "security", "threat-hunting"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "certifi>=2023.0.0",
+    "sigma-cli>=2.0.0",
+]
+
+[project.optional-dependencies]
+# Install popular backends in one go (optional)
+backends-popular = [
+    "pysigma-backend-splunk",
+    "pysigma-backend-elasticsearch",
+    "pysigma-backend-kusto",
+    "pysigma-backend-qradar",
+    "pysigma-backend-crowdstrike",
+    "pysigma-backend-logpoint",
+    "pysigma-backend-sentinelone",
+]
+backends-all = [
+    "pysigma-backend-splunk",
+    "pysigma-backend-elasticsearch",
+    "pysigma-backend-kusto",
+    "pysigma-backend-qradar",
+    "pysigma-backend-crowdstrike",
+    "pysigma-backend-logpoint",
+    "pysigma-backend-sentinelone",
+    "pysigma-backend-helix",
+    "pysigma-backend-opensearch",
+    "pysigma-backend-insightidr",
+    "pysigma-backend-cortexxdr",
+    "pysigma-backend-carbonblack",
+    "pysigma-backend-panther",
+    "pysigma-backend-datadog",
+    "pysigma-backend-loki",
+    "pysigma-backend-netwitness",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+sigmaforage = "sigmaforge.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/aakashraman/SigmaForage"
+Documentation = "https://github.com/aakashraman/SigmaForage#readme"
+Repository = "https://github.com/aakashraman/SigmaForage"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sigmaforge*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-v --tb=short"
+markers = [
+    "integration: marks tests that run real sigma-cli conversion (deselect with -m 'not integration')",
+]
+
+[tool.coverage.run]
+source = ["sigmaforge"]
+omit = ["tests/*"]

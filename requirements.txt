@@ -1,0 +1,25 @@
+# SigmaForge - Core (sigma-cli is the conversion engine)
+certifi>=2023.0.0
+sigma-cli>=2.0.0
+
+# Optional: install backends you need via sigma plugin, e.g.:
+#   sigma plugin install splunk
+#   sigma plugin install elasticsearch
+#   sigma plugin install kusto
+# Or install pySigma backends directly, e.g.:
+#   pysigma-backend-splunk
+#   pysigma-backend-elasticsearch
+#   pysigma-backend-kusto
+#   pysigma-backend-qradar
+#   pysigma-backend-crowdstrike
+#   pysigma-backend-logpoint
+#   pysigma-backend-sentinelone
+#   pysigma-backend-helix
+#   pysigma-backend-opensearch
+#   pysigma-backend-insightidr
+#   pysigma-backend-cortexxdr
+#   pysigma-backend-carbonblack
+#   pysigma-backend-panther
+#   pysigma-backend-datadog
+#   pysigma-backend-loki
+#   pysigma-backend-netwitness
