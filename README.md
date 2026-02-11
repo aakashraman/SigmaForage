@@ -74,6 +74,17 @@ sigmaforage --help
 
 ---
 
+## How it works (sigma-cli & pySigma)
+
+SigmaForage does not generate SIEM queries itself. It calls **[sigma-cli](https://github.com/SigmaHQ/sigma-cli)** to build the equivalent query; sigma-cli in turn uses **pySigma** (backends and pipelines) to parse the Sigma rule and emit native SPL, KQL, AQL, etc.
+
+- **`-s`** (e.g. `-s splunk`, `-s elasticsearch`): Target **SIEM** — which backend (and thus which query language) to use.
+- **`-p`** (e.g. `-p sysmon`): **Processing pipeline** — how to map the rule's log source and fields (e.g. process_creation → Sysmon EventID 1). This is *not* "which index to search"; index/sourcetype are handled by the backend or your SIEM config.
+
+You need the matching **backend** installed for each `-s` (e.g. `sigma plugin install splunk`) and, for Windows process rules, a pipeline like **sysmon** (e.g. `pip install pysigma-pipeline-sysmon`).
+
+---
+
 ## Supported SIEM / XDR Platforms
 
 | Platform              | Backend ID        |
