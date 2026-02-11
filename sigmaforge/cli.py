@@ -10,27 +10,15 @@ from . import __version__
 from .converter import convert_sigma_to_siem
 from .siem_backends import SIEM_BACKENDS, SIEM_DISPLAY_ORDER
 
-# ASCII art shown when the tool launches (plain ASCII for all terminals)
+# Simple banner shown when the tool launches
 BANNER = r"""
-  _____ _                    _____
- / ____(_)                  |  ___|__   __ _ _ __ ___
-| (___  _ __ ___   __ _ _ __| |_ / _ \ / _` | '_ ` _ \
- \___ \| '_ ` _ \ / _ \ '__|  _| (_) | (_| | | | | | |
-  ____) | | | | | |  __/ |  | | \___/ \__, |_| |_| |_|
- |_____/|_| |_| |_|\___|_|  |_|       |___/
-     ___
-    / _ \__ _ _ __ ___   ___  ___ _ __
-   | | | / _` | '_ ` _ \ / _ \/ _ \ '__|
-   | |_| | (_| | | | | | |  __/  __/ |
-    \___/ \__, |_| |_| |_|\___|\___|_|
-             |_|
-
-  One Sigma rule. Every SIEM.
+Sigma Forage
+One Sigma rule. Every SIEM.
 """
 
 
 def print_banner() -> None:
-    """Print Sigma Forage ASCII art when the CLI launches."""
+    """Print Sigma Forage banner when the CLI launches."""
     print(BANNER)
 
 

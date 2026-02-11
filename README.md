@@ -20,7 +20,20 @@ Detection rules are often written in [Sigma](https://github.com/SigmaHQ/sigma), 
 
 ## Demo
 
-### 1. Clone and Install
+### When you launch the tool
+
+Every time you run `sigmaforage`, you'll see a simple Sigma Forage banner, then your command runs:
+
+```
+Sigma Forage
+One Sigma rule. Every SIEM.
+
+EventID=1 Image="*\\curl.exe" OR Product="The curl executable"
+```
+
+*(Above: `sigmaforage -i sigma-rules/Windows/proc_creation_win_curl_execution.yml -s splunk --no-header`)*
+
+### 1. Clone and install
 
 ```bash
 git clone https://github.com/aakashraman/SigmaForage.git
