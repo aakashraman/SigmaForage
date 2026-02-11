@@ -183,39 +183,6 @@ SigmaForage/
 
 ---
 
-## Query validity
-
-Output is produced by **sigma-cli** and official **pySigma** backends—SigmaForage does not generate queries itself; it calls sigma-cli with the correct backend and pipeline. Correctness of the generated query (SPL, KQL, etc.) is therefore the same as sigma-cli’s for that SIEM.
-
-- **Splunk:** Valid SPL; paste into Splunk Search (adjust index/sourcetype if needed).
-- **Elasticsearch:** Lucene/KQL/EQL; use in Kibana Discover or Dev Tools.
-- **Azure Sentinel:** KQL for Logs / Advanced Hunting.
-- **Others:** Same idea—run in the SIEM to confirm against your schema and data.
-
-### Validating SIEM outputs
-
-- **Integration tests:** We run real sigma-cli conversion in tests for Splunk (and Elasticsearch when that backend is installed) and assert the output is non-empty and contains expected terms. Run: `pytest tests/test_integration.py -v`.
-- **Validation script:** To see which installed backends produce output for a given rule, run:
-  ```bash
-  python scripts/validate_siem_outputs.py
-  python scripts/validate_siem_outputs.py --rule sigma-rules/Linux/proc_creation_lnx_curl_usage.yml
-  ```
-  This reports OK/FAIL per SIEM; FAIL usually means the backend is not installed (`sigma plugin install <backend>`).
-- **Full confidence:** Run the generated query in your target SIEM to confirm it works with your index/schema.
-
----
-
-## Testing
-
-```bash
-pip install -e ".[dev]"
-pytest
-pytest -m "not integration"
-pytest --cov=sigmaforge
-```
-
----
-
 ## Credits
 
 - [Sigma](https://github.com/SigmaHQ/sigma) and [SigmaHQ](https://github.com/SigmaHQ) for the rule format and ecosystem.
